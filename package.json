@@ -1,0 +1,11 @@
+{
+  "name": "ticket",
+  "version": "0.0.1",
+  "author": "Silas Sewell <silas@sewell.org>",
+  "description": "Create \"unique\" 64-bit integers",
+  "main": "./ticket.js",
+  "scripts": {
+    "install": "node-gyp rebuild",
+    "test": "node test.js"
+  }
+}
