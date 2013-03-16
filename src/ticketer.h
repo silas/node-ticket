@@ -26,8 +26,8 @@ class Ticketer : public node::ObjectWrap {
   static v8::Handle<v8::Value> Get(const v8::Arguments& args);
   time_t current_time_;
   time_t last_time_;
-  int64_t sequence_;
-  int64_t id_;
+  long long sequence_;
+  long long id_;
 };
 
 #endif
