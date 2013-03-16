@@ -53,12 +53,12 @@ Handle<Value> Ticketer::Get(const Arguments& args) {
     return scope.Close(Undefined());
   }
 
-  int64_t result = (int64_t)obj->current_time_ << TIME_LEFT_SHIFT
+  int64_t result = ((int64_t)obj->current_time_ << TIME_LEFT_SHIFT)
     | (obj->id_ << SERVER_LEFT_SHIFT)
     | (obj->sequence_ & SEQUENCE_MASK);
 
   char buffer[BUFFER_SIZE];
-  sprintf(buffer, "%lld", result);
+  sprintf(buffer, "%lld", (long long)result);
 
   return scope.Close(String::New(buffer));
 }
