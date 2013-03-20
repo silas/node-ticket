@@ -1,6 +1,6 @@
 {
   "name": "ticket",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Silas Sewell <silas@sewell.org>",
   "description": "Create \"unique\" 64-bit integers",
   "main": "./ticket.js",
