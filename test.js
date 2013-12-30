@@ -2,10 +2,10 @@ var assert = require('assert')
   , tickets = []
 
 for (var i = 1; i <= 16; i++) {
-  tickets[i] = require('./ticket')(i)
+  tickets[i] = require('./index')(i)
 }
 
-function check_ok() {
+function expectNoCollisions() {
   var data = {}
 
   for (var i = 0; i < 8192; i++) {
@@ -14,20 +14,19 @@ function check_ok() {
 
       if (data[id]) {
         throw new Error('Error: ' + id + ': ' + data[id])
-      } else {
-        data[id] = 1
       }
+      data[id] = 1
     }
   }
 
   return Object.keys(data).length
 }
 
-function check_not_ok() {
+function expectCollisions() {
   var ok = false
 
   try {
-    for (var i = 0; i < 131072; i++) {
+    for (var i = 0; i < 8192 * 16; i++) {
       var id = tickets[0].get()
     }
   } catch(e) {
@@ -37,5 +36,5 @@ function check_not_ok() {
   return ok
 }
 
-assert.equal(check_ok(), 131072)
-assert.ok(check_not_ok())
+assert.equal(expectNoCollisions(), 8192 * 16)
+assert.ok(expectCollisions())
